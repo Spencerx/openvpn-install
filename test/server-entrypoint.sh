@@ -346,6 +346,10 @@ if [ "$(cat /proc/sys/net/ipv4/ip_forward)" != "1" ]; then
 	}
 fi
 
+# Show the install log for CI debugging
+echo "=== openvpn-install.log ==="
+cat /opt/openvpn-install.log 2>/dev/null || echo "Log file not found"
+
 # Start OpenVPN in foreground (run from /etc/openvpn so relative paths work)
 cd /etc/openvpn
 exec openvpn --config /etc/openvpn/server.conf

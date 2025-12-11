@@ -157,10 +157,7 @@ jobs:
 
       - name: Show server logs
         if: always()
-        run: |
-          docker logs openvpn-server 2>&1 || true
-          echo "=== openvpn-install.log ==="
-          docker exec openvpn-server cat /opt/openvpn-install.log 2>/dev/null || echo "Log file not found"
+        run: docker logs openvpn-server 2>&1 || true
 
       - name: Show client logs
         if: always()
